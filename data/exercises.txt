@@ -1,0 +1,7 @@
+Major Scale
+Natural Minor Scale
+Harmonic Minor Scale
+Major Arpeggio
+Minor Arpeggio
+Major Thirds
+Melodic Minor Thirds
