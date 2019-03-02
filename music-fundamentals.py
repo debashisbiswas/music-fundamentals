@@ -1,3 +1,5 @@
+from random import shuffle
+
 print('--- MUSIC FUNDAMENTALS ---\n')
 
 # open scales file and populate list
@@ -16,3 +18,15 @@ for line in exercises_file.read().splitlines():
     exercises_list.append(line)
 
 exercises_file.close()
+
+shuffle(scales_list)
+shuffle(exercises_list)
+for scale in scales_list:
+    print('--> ' + scale)
+    for exercise in exercises_list:
+        print('\t' + exercise)
+
+    theInput = input('\nPress Enter to continue... (q + enter to quit)\n')
+    if theInput.lower() == 'q':
+        print('Exiting...')
+        break

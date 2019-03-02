@@ -2,9 +2,9 @@ C
 F
 Bb
 Eb
-Ab
-Db
-Gb
+Ab/G#
+Db/C#
+Gb/F#
 B
 E
 A
