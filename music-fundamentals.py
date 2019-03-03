@@ -34,10 +34,10 @@ exercises_file.close()
 
 if randomize_scales:
     shuffle(scales_list)
-if randomize_exercises:
-    shuffle(exercises_list)
 
 for scale in scales_list:
+    if randomize_exercises:
+        shuffle(exercises_list)
     print('--> ' + scale)
     for exercise in exercises_list:
         print((' ' * 4) + exercise)
