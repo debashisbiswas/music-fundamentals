@@ -1,6 +1,17 @@
 import timeit
 from random import shuffle
 
+def secondsToFormattedTime(seconds):
+    # https://codereview.stackexchange.com/questions/174796/convert-seconds-to-hours-minutes-seconds-and-pretty-print/174798
+    minutes, seconds = divmod(seconds, 60)
+    hours, minutes = divmod(minutes, 60)
+
+    periods = [('hours', hours), ('minutes', minutes), ('seconds', seconds)]
+    time_string = ', '.join('{} {}'.format(round(value, 2), name)
+                        for name, value in periods
+                        if value)
+    return time_string
+
 print('--- MUSIC FUNDAMENTALS ---\n')
 # ask user if they would like to randomize the keys, and save response as boolean
 user_key_randomize_preference = ''
@@ -66,7 +77,7 @@ print('Results:')
 for result in keys_list_with_times:
     key = result[0]
     time = result[1]
-    print('{0: <6s}: {1} seconds'.format(key, time))
+    print('{0: <6s}: {1}'.format(key, secondsToFormattedTime(time)))
 
-print('Total time: {0} seconds'.format(total_time))
+print('Total time: {0}'.format(secondsToFormattedTime(total_time)))
 print('Complete! Nice work :)')
