@@ -1,3 +1,4 @@
+import timeit
 from random import shuffle
 
 print('--- MUSIC FUNDAMENTALS ---\n')
@@ -35,16 +36,35 @@ exercises_file.close()
 if randomize_scales:
     shuffle(scales_list)
 
+scales_list_with_times = list(scales_list)
+start_time = timeit.default_timer()
+
 for scale in scales_list:
+    current_index = scales_list.index(scale)
+    scale_start_time = timeit.default_timer()
     if randomize_exercises:
         shuffle(exercises_list)
-    print('--> ' + scale)
+    # prints the scale, and the number it is out of the total number of scales
+    print('--> {0} ({1}/{2})'.format(scale, current_index + 1, len(scales_list)))
     for exercise in exercises_list:
         print((' ' * 4) + exercise)
 
     theInput = input('\nPress Enter to continue... (q + enter to quit)\n')
+    scale_end_time = timeit.default_timer()
+    scale_total_time = scale_end_time - scale_start_time
+    scales_list_with_times[current_index] = [scale, round(scale_total_time, 2)]
     if theInput.lower() == 'q':
         print('Exiting...')
         break
 
-print('Complete!')
+end_time = timeit.default_timer()
+total_time = round(end_time - start_time, 2)
+
+print('Results:')
+for result in scales_list_with_times:
+    scale = result[0]
+    time = result[1]
+    print('{0: <6s}: {1} seconds'.format(scale, time))
+
+print('Total time: {0} seconds'.format(total_time))
+print('Complete! Nice work :)')
