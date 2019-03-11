@@ -68,7 +68,7 @@ for key in keys_list:
     keys_list_with_times[current_index] = [key, round(key_total_time, 2)]
     if theInput.lower() == 'q':
         print('Exiting...')
-        break
+        quit()
 
 end_time = timeit.default_timer()
 total_time = round(end_time - start_time, 2)
